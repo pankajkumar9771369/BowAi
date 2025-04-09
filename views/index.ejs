@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor with AI Chat</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+   <!-- Right Section - File Explorer -->
+   <section class="file-explorer">
+    <div class="file-explorer-header">
+        <span>Files</span>
+        <button id="new-file">+ File</button>
+    </div>
+    <div class="file-tree" id="file-tree">
+        <!-- File tree will be added here dynamically -->
+    </div>
+    <div class="file-actions">
+        <button id="new-folder">+ Folder</button>
+        <button id="delete-file">Delete</button>
+    </div>
+</section>
+    
+    <!-- Middle Section - Editor -->
+    <section class="editor-section">
+        <div class="editor-header">
+            <div class="editor-tabs" id="editor-tabs">
+                <!-- Tabs will be added here dynamically -->
+            </div>
+            <div class="editor-actions">
+                <button id="save-file">Save</button>
+                <button id="ai-edit">AI Edit</button>
+            </div>
+        </div>
+        <div class="code-editor">
+            <textarea id="editor" spellcheck="false"></textarea>
+        </div>
+    </section>
+    <!-- right  Section - Chat -->
+    <section class="chat-section">
+        <div class="chat-header">AI Assistant</div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-input">
+            <textarea id="chat-input" placeholder="Ask the AI for help..."></textarea>
+            <button id="send-message">Send</button>
+        </div>
+    </section>
+    
+
+    <script  src="/js/script.js">
+        
+
+    </script>
+</body>
+</html>
