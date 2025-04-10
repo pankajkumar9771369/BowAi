@@ -17,7 +17,6 @@ const ChatHistory = require('./models/ChatHistory');
 const authMiddleware = require('./middlewares/auth');
 
 
-
 // Import routes
 const userRoutes = require('./routes/user');
 const projectRoutes = require('./routes/project');
@@ -40,6 +39,7 @@ dotenv.config();
 //     origin: 'http://localhost:5173', // Your frontend URL
 //     credentials: true // If you're using cookies/sessions
 //   }));
+
 // MongoDB connection
 console.log(process.env.MONGO_URI);
 mongoose
@@ -50,27 +50,30 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-
 // Routes
 app.use('/api/auth', userRoutes);
 app.use('/api/projects',projectRoutes);
 app.use('/api/files',projectfileRoutes);
 app.use('/api/chat', chatRoutes);
-app.use('/api/ai',aiRoutes);
+app.use('/api',aiRoutes);
 
-
-// Error handling middleware
-
-// Error Handling
+// / Error Handling
 app.use(errorHandler.handleAIError);
 app.use(errorHandler.handleCodeError);
 app.use(errorHandler.genericError);
-app.get("/",authMiddleware,(req,res)=>{
+app.get("/",(req,res)=>{
   res.render("index")
 })
+
+
+
  app.get("/login",(req,res)=>{
   res.render("auth")
  })
+
+
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
+
+        

@@ -7,6 +7,7 @@ const authMiddleware = async (req, res, next) => {
         console.log('Auth Header:', req.header('Authorization'));
 
         const token = req.header('Authorization')?.replace('Bearer ', '');
+        console.log(token);
         if (!token) {
             console.log('No token provided');
             return res.status(401).json({ error: 'No authentication token provided' });

@@ -32,4 +32,17 @@ router.post('/:projectId', auth, async (req, res) => {
   }
 });
 
+router.get("/:projectId",auth,async(req,res)=>{
+    try {
+      const chatHistory = await ChatHistory.findOneAndUpdate(
+        { projectId: req.params.projectId, userId: req.user._id },
+        
+      );
+      res.json(chatHistory);
+  
+        
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+})
 module.exports = router;

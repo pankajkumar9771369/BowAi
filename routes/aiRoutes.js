@@ -1,8 +1,8 @@
 const express = require('express');
+const AIController = require('../controllers/ai.controller');
 const router = express.Router();
-const auth = require('../middlewares/auth');
-const aiController = require('../controllers/ai.controller');
 
-router.post('/edit', auth, aiController.surgicalEdit);
+// Define the route that takes fileId as a parameter in the URL
+router.post('/files/:fileId/ai/edit', AIController.surgicalEdit);
 
 module.exports = router;

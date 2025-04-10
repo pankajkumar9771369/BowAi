@@ -15,6 +15,7 @@ router.post('/signup', async (req, res) => {
             return res.status(400).json({ error: 'Email already exists' });
         }
 
+
         // Hash password
         const passwordHash = await bcrypt.hash(password, 10);
 
@@ -26,6 +27,7 @@ router.post('/signup', async (req, res) => {
             projects: [],
             createdAt: new Date()
         });
+        
 
         // Generate token
         const token = jwt.sign(
@@ -33,6 +35,8 @@ router.post('/signup', async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '24h' }
         );
+
+ console.log(token);
 
         res.status(201).json({
             message: 'User created successfully',
@@ -88,5 +92,19 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    // Clear the token from cookies if it's set as a cookie
+    res.clearCookie('authToken');  // Assuming 'authToken' is the cookie name holding JWT
+
+    // Optionally handle blacklisting or token invalidation (if using a blacklist)
+
+    res.status(200).json({ message: 'Logged out successfully' });
+});
+
+
 module.exports = router;
+
+
+
+
 
